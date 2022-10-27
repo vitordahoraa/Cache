@@ -119,7 +119,7 @@ public class Cache {
     }
 
     public void executionProtocol(){ //Pega os endereços separados por virgula, transforma em int, e coloca na cache. Depois imprime os acertos
-        List<String> Addresses = Arrays.asList(this.Address.split(","));
+        List<String> Addresses = Arrays.asList(this.Address.split(",|\\ "));
         ArrayList<Boolean> Acertos = new ArrayList();
         for(String Address : Addresses){
             if(this.accessAddress(Integer.parseInt(Address)))
@@ -127,6 +127,9 @@ public class Cache {
         }
 
         System.out.println("O Número de acertos foi: "+Acertos.size());
+        float AcertosSize = Acertos.size();
+        float AddressesSize = Addresses.size();
+        System.out.println("Porcentagem de acerto foi: "+((AcertosSize/AddressesSize)*100)+"%");
     }
 
     public void ImprimeMatriz(){//Imprime os Blocos/Conjuntos, e os endereços salvos nela;
